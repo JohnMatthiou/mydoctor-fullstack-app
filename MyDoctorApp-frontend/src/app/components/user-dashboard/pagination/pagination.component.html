@@ -1,0 +1,31 @@
+<div class="d-flex justify-content-center gap-2 fs-5">
+    @if (currentPage > 1) {
+    <a role="button" (click)="goToPage(1)" class="text-primary text-decoration-underline"> &lt;&lt;First</a>
+    }
+    @if (currentPage === 1) {
+    <span class="disabled">&lt;&lt;First</span>
+    }
+
+    @if (currentPage > 1) {
+        <a role="button" (click)="goToPage(currentPage - 1)" class="text-primary text-decoration-underline">&lt;Prev</a>
+    }
+    @if (currentPage === 1) {
+        <span class="disabled">&lt;Prev</span>
+    }
+    
+    <span>{{ currentPage }} / {{ totalPages }}</span>
+
+     @if (currentPage < totalPages) {
+        <a role="button" (click)="goToPage(currentPage + 1)" class="text-primary text-decoration-underline">Next&gt;</a>
+     }
+     @if (currentPage === totalPages) {
+        <span class="disabled">Next&gt;</span>
+     }
+
+     @if (currentPage < totalPages) {
+        <a role="button" (click)="goToPage(totalPages)" class="text-primary text-decoration-underline">Last&gt;&gt;</a>
+     }
+     @if (currentPage === totalPages) {
+        <span class="disabled">Last&gt;&gt;</span>
+     }        
+</div>

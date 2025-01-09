@@ -1,0 +1,48 @@
+<div class="d-flex justify-content-center">
+    <div class="mt-4 w-50 d-flex flex-column align-items-center">
+        <h4>User Login</h4>
+
+        <form [formGroup]="form" class="d-flex flex-column gap-3 mt-4 w-50" (ngSubmit)="onSubmit()">
+            <div class="form-group">
+                <label for="email">Username:</label>
+                <input type="text" id="username" class="form-control" formControlName="username">
+                @if (form.get('username').touched && form.get('username').invalid) {
+                <div class="text-danger">
+                    @if (form.get('username').hasError('required')) {
+                    <small>Το username δεν μπορεί να είναι κενό</small>
+                    }
+                    @if (form.get('username').hasError('minlength') || form.get("username").hasError('maxlength')) {
+                    <small>Το username πρέπει να είναι μεταξύ 2 και 50 χαρακτήρων</small>
+                    }
+                </div>
+                }
+            </div>
+            <div>
+                <label for="password">Password:</label>
+                <input type="password" id="password" class="form-control" formControlName="password">
+                @if (form.get('password').touched && form.get('password').invalid) {
+                <div class="text-danger">
+                    @if (form.get('password').hasError('required')) {
+                    <small>Το password δεν μπορεί να είναι κενό</small>
+                    }
+                    @if (form.get('password').hasError('pattern')) {
+                    <small>Το password πρέπει να περιέχει τουλάχιστον έναν κεφαλαίο, έναν πεζό, έναν ειδικό χαρακτήρα, έναν αριθμό και να είναι μεταξύ 8 και 20 χαρακτήρων </small>
+                    }
+                </div>
+                }
+            </div>
+            <button type="submit" class="btn btn-primary" [disabled]="!form.valid">
+                Login
+            </button>
+            @if (invalidLogin) {
+            <div class="alert alert-danger">
+                <strong>Error:</strong> Invalid email or password
+            </div>
+            }
+        </form>
+        <p class="text-center mt-3">
+            Δεν έχεις λογαριασμό; Δημιούργησε
+            <a role="button" routerLink="/signup" class="text-primary text-decoration-underline">εδώ</a>
+        </p>
+    </div>
+</div>

@@ -1,0 +1,175 @@
+<div class="d-flex justify-content-center mb-5">
+    <div class="mt-4 w-50 d-flex flex-column align-items-center">
+        <h4>Εγγραφή Ασθενή</h4>
+
+        @if (registrationStatus.message === "Not attempted yet") {
+        <div class="d-flex flex-column mt-2 align-items-center">
+            <form [formGroup]="form" class="d-flex flex-column">
+                <mat-form-field
+                    [ngClass]="{'custom-form-field': form.get('username')?.touched && (form.get('username').hasError('required') || form.get('username').hasError('minlength') || form.get('username').hasError('maxlength') || form.get('username').hasError('pattern'))}">
+                    <mat-label>Username</mat-label>
+                    <input matInput type="text" formControlName="username">
+                    @if (form.get("username").hasError('required')) {
+                    <mat-error>Το username δεν μπορεί να είναι κενό</mat-error>
+                    }
+                    @if (form.get("username").hasError('minlength') || form.get("username").hasError('maxlength')) {
+                    <mat-error>Το username πρέπει να είναι μεταξύ 2 και 50 χαρακτήρων</mat-error>
+                    }
+                    @if (form.get("username").hasError('pattern')) {
+                    <mat-error>Το username δεν μπορεί να περιέχει κενά διαστήματα</mat-error>
+                    }
+                </mat-form-field>
+
+                <mat-form-field
+                    [ngClass]="{'custom-form-field': form.get('email')?.touched && (form.get('email').hasError('required') || form.get('email').hasError('maxlength'))}">
+                    <mat-label>Email</mat-label>
+                    <input matInput type="text" formControlName="email">
+                    @if (form.get("email").hasError('required')) {
+                    <mat-error>Το email δεν μπορεί να είναι κενό</mat-error>
+                    }
+                    @if (form.get("email").hasError('maxLength')) {
+                    <mat-error>Το email δεν πρέπει να υπερβαίνει τους 100 χαρακτήρες</mat-error>
+                    }
+                    @if (form.get("email").hasError('email')) {
+                    <mat-error>Μη έγκυρη διεύθυνση email</mat-error>
+                    }
+                </mat-form-field>
+
+
+                <mat-form-field
+                    [ngClass]="{'custom-form-field': form.get('password')?.touched && (form.get('password').hasError('required') || form.get('password').hasError('pattern'))}">
+                    <mat-label>Password</mat-label>
+                    <input matInput type="password" formControlName="password">
+                    @if (form.get("password").hasError('required')) {
+                    <mat-error>Το password δεν μπορεί να είναι κενό</mat-error>
+                    }
+                    @if (form.get("password").hasError('pattern')) {
+                    <mat-error>Το password πρέπει να περιέχει τουλάχιστον έναν κεφαλαίο, έναν
+                        πεζό, έναν ειδικό χαρακτήρα, έναν
+                        αριθμό και να είναι μεταξύ 8 και 20 χαρακτήρων </mat-error>
+                    }
+                </mat-form-field>
+
+
+                <mat-form-field
+                    [ngClass]="{'custom-form-field': form.get('confirmPassword')?.touched && (form.get('confirmPassword').hasError('required') || form.get('confirmPassword').hasError('passwordMismatch'))}">
+                    <mat-label>Επιβεβαίωση Password</mat-label>
+                    <input matInput type="password" formControlName="confirmPassword">
+                    @if(form.get("confirmPassword")?.hasError("passwordMismatch")){
+                    <mat-error>Το πεδίο δεν ταιριάζει με το password</mat-error>
+                    }@else {
+                    <mat-error>Το πεδίο δεν μπορεί να είναι κενό</mat-error>
+                    }
+                </mat-form-field>
+
+                <mat-form-field
+                    [ngClass]="{'custom-form-field': form.get('firstname')?.touched && (form.get('firstname').hasError('required') || form.get('firstname').hasError('minlength') || form.get('firstname').hasError('maxlength') || form.get('firstname').hasError('pattern'))}">
+                    <mat-label>Όνομα</mat-label>
+                    <input matInput type="text" formControlName="firstname">
+                    @if (form.get("firstname").hasError('required')) {
+                    <mat-error>Το όνομα δεν μπορεί να είναι κενό</mat-error>
+                    }
+                    @if (form.get("firstname").hasError('minlength') || form.get("firstname").hasError('maxlength')) {
+                    <mat-error>Το όνομα πρέπει να είναι μεταξύ 2 και 50 χαρακτήρων</mat-error>
+                    }
+                    @if (form.get("firstname").hasError('pattern')) {
+                    <mat-error>Το όνομα δεν μπορεί να περιέχει κενά διαστήματα</mat-error>
+                    }
+                </mat-form-field>
+
+                <mat-form-field
+                    [ngClass]="{'custom-form-field': form.get('lastname')?.touched && (form.get('lastname').hasError('required') || form.get('lastname').hasError('minlength') || form.get('lastname').hasError('maxlength') || form.get('lastname').hasError('pattern'))}">
+                    <mat-label>Επώνυμο</mat-label>
+                    <input matInput type="text" formControlName="lastname">
+                    @if (form.get("lastname").hasError('required')) {
+                    <mat-error>Το επώνυμο δεν μπορεί να είναι κενό</mat-error>
+                    }
+                    @if (form.get("lastname").hasError('minlength') || form.get("lastname").hasError('maxlength')) {
+                    <mat-error>Το επώνυμο πρέπει να είναι μεταξύ 2 και 50 χαρακτήρων</mat-error>
+                    }
+                    @if (form.get("lastname").hasError('pattern')) {
+                    <mat-error>Το επώνυμο δεν μπορεί να περιέχει κενά διαστήματα</mat-error>
+                    }
+                </mat-form-field>
+
+                <mat-form-field
+                    [ngClass]="{'custom-form-field': form.get('phoneNumber')?.touched && (form.get('phoneNumber').hasError('required') || form.get('phoneNumber').hasError('minlength') || form.get('phoneNumber').hasError('maxlength') || form.get('phoneNumber').hasError('pattern'))}">
+                    <mat-label>Τηλέφωνο</mat-label>
+                    <input matInput type="text" formControlName="phoneNumber">
+                    @if (form.get("phoneNumber").hasError('required')) {
+                    <mat-error>Το τηλέφωνο δεν μπορεί να είναι κενό</mat-error>
+                    }
+                    @if (form.get("phoneNumber").hasError('minlength') || form.get("phoneNumber").hasError('maxlength'))
+                    {
+                    <mat-error>Το τηλέφωνο πρέπει να είναι μεταξύ 10 και 15 χαρακτήρων</mat-error>
+                    }
+                    @if (form.get("phoneNumber").hasError('pattern')) {
+                    <mat-error>Το τηλέφωνο δεν μπορεί να περιέχει κενά διαστήματα</mat-error>
+                    }
+                </mat-form-field>
+
+                <mat-form-field
+                    [ngClass]="{'custom-form-field': form.get('city')?.touched && (form.get('city').hasError('required') || form.get('city').hasError('minlength') || form.get('city').hasError('maxlength') || form.get('city').hasError('pattern'))}">
+                    <mat-label>Πόλη</mat-label>
+                    <input matInput type="text" formControlName="city">
+                    @if (form.get("city").hasError('required')) {
+                    <mat-error>Η πόλη δεν μπορεί να είναι κενή</mat-error>
+                    }
+                    @if (form.get("city").hasError('minlength') || form.get("city").hasError('maxlength')) {
+                    <mat-error>Η πόλη πρέπει να είναι μεταξύ 2 και 100 χαρακτήρων</mat-error>
+                    }
+                    @if (form.get("city").hasError('pattern')) {
+                    <mat-error>Η πόλη δεν μπορεί να περιέχει κενά διαστήματα</mat-error>
+                    }
+                </mat-form-field>
+
+                <mat-form-field
+                    [ngClass]="{'custom-form-field': form.get('address')?.touched && (form.get('address').hasError('required') || form.get('address').hasError('minlength') || form.get('address').hasError('maxlength') || form.get('address').hasError('pattern'))}">
+                    <mat-label>Διεύθυνση</mat-label>
+                    <input matInput type="text" formControlName="address">
+                    @if (form.get("address").hasError('required')) {
+                    <mat-error>Η διεύθυνση δεν μπορεί να είναι κενή</mat-error>
+                    }
+                    @if (form.get("address").hasError('minlength') || form.get("address").hasError('maxlength')) {
+                    <mat-error>Η διεύθυνση πρέπει να είναι μεταξύ 2 και 50 χαρακτήρων</mat-error>
+                    }
+                    @if (form.get("address").hasError('pattern')) {
+                    <mat-error>Η διεύθυνση δεν μπορεί ξεκινά ή να τελειώνει με κενά διαστήματα</mat-error>
+                    }
+                </mat-form-field>
+
+                <mat-form-field
+                    [ngClass]="{'custom-form-field': form.get('amka')?.touched && (form.get('amka').hasError('required') || form.get('amka').hasError('minlength') || form.get('amka').hasError('maxlength') || form.get('amka').hasError('pattern'))}">
+                    <mat-label>ΑΜΚΑ</mat-label>
+                    <input matInput type="text" formControlName="amka">
+                    @if (form.get("amka").hasError('required')) {
+                    <mat-error>Το ΑΜΚΑ δεν μπορεί να είναι κενό</mat-error>
+                    }
+                    @if (form.get("amka").hasError('minlength') || form.get("amka").hasError('maxlength')) {
+                    <mat-error>Το ΑΜΚΑ πρέπει να είναι μεταξύ 11 και 15 χαρακτήρων</mat-error>
+                    }
+                    @if (form.get("amka").hasError('pattern')) {
+                    <mat-error>Το ΑΜΚΑ δεν μπορεί να περιέχει κενά διαστήματα</mat-error>
+                    }
+                </mat-form-field>
+
+                <button mat-flat-button (click)="onSubmit(form.value)" [disabled]="form.invalid">
+                    Υποβολή
+                </button>
+            </form>
+            <a role="button" routerLink="/signup" class="text-primary text-decoration-underline">Ακύρωση</a>
+        </div>
+        } @else {
+        @if (registrationStatus.success) {
+        <div class="alert alert-success mt-2 w-50">
+            <strong>Success:</strong> {{registrationStatus.message}}
+        </div>
+        } @else {
+        <div class="alert alert-danger mt-2 w-50">
+            <strong>Error:</strong> {{registrationStatus.message}}
+        </div>
+        <a role="button" (click)="returnToForm()" class="text-primary text-decoration-underline">Επιστροφή στη φόρμα</a>
+        }
+        }
+    </div>
+</div>

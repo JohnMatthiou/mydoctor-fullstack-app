@@ -1,0 +1,22 @@
+<div class="d-flex flex-row gap-2 mt-3">
+    <app-sidemenu></app-sidemenu>
+    <div class="d-flex flex-grow-1 p-2 text-nowrap w-75 justify-content-center">
+        @if (retrievalStatus.success) {
+        <div class="mt-3 d-flex flex-column align-items-center w-50">
+            <h2 class="mb-5">Στοιχεία Χρήστη</h2>
+            <app-user-table [user]="user"></app-user-table>
+            <a role="button" routerLink="/dashboard/user-update" class="text-primary text-decoration-underline">Τροποποίηση</a>
+        </div>
+        } @else {
+        @if (retrievalStatus.message === "Loading") {
+        <div class="mt-2 w-50">
+            <span>{{retrievalStatus.message}}...</span>
+        </div>
+        } @else {
+        <div class="alert alert-danger mt-2 w-50">
+            <span>{{retrievalStatus.message}}</span>
+        </div>
+        }
+        }
+    </div>
+</div>

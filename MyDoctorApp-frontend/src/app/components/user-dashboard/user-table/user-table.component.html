@@ -1,0 +1,47 @@
+<table class="table table-bordered w-50">
+    <tr>
+        <td class="fw-semibold">Username:</td>
+        <td class="ps-2">{{ user.username }}</td>
+    </tr>
+    <tr>
+        <td class="fw-semibold">Email:</td>
+        <td class="ps-2">{{ user.email }}</td>
+    </tr>
+    <tr>
+        <td class="fw-semibold">Όνομα:</td>
+        <td class="ps-2">{{ user.firstname }}</td>
+    </tr>
+    <tr>
+        <td class="fw-semibold">Επώνυμο:</td>
+        <td class="ps-2">{{ user.lastname }}</td>
+    </tr>
+    @if(user.userRole === "Patient") {
+    <tr>
+        <td class="fw-semibold">ΑΜΚΑ:</td>
+        <td class="ps-2">{{ user.amka }}</td>
+    </tr>
+    } @else {
+    <tr>
+        <td class="fw-semibold">ΑΦΜ:</td>
+        <td class="ps-2">{{ user.afm }}</td>
+    </tr>
+    }
+    <tr>
+        <td class="fw-semibold">Πόλη:</td>
+        <td class="ps-2">{{ user.city }}</td>
+    </tr>
+    <tr>
+        <td class="fw-semibold">Διεύθυνση:</td>
+        <td class="ps-2">{{ user.address }}</td>
+    </tr>
+    <tr>
+        <td class="fw-semibold">Τηλέφωνο:</td>
+        <td class="ps-2">{{ user.phoneNumber }}</td>
+    </tr>
+    @if(user.userRole === "Doctor") {
+    <tr>
+        <td class="fw-semibold">Ειδικότητα:</td>
+        <td class="ps-2">{{ user.doctorSpecialty }}</td>
+    </tr>
+    }
+</table>

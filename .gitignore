@@ -1,0 +1,22 @@
+# Node.js (Angular frontend)
+node_modules/
+dist/
+
+# ASP.NET backend
+bin/
+obj/
+Logs/
+.vs/
+*.user
+
+# Logs
+*.log
+
+# Temporary files
+*.tmp
+*.cache
+
+# IDE settings
+.idea/
+*.suo
+*.user

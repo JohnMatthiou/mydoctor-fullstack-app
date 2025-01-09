@@ -1,0 +1,27 @@
+<div class="d-flex flex-row gap-2 mt-3">
+    <app-sidemenu></app-sidemenu>
+    <div class="d-flex flex-column flex-grow-1 p-2 w-75 justify-content-center">
+        @if (this.user().role === "Patient") {
+        <div class="mt-2 d-flex justify-content-center">
+            <h4>Οι Ιατροί μου</h4>
+        </div>
+        @if (noResults) {
+        <div class="d-flex justify-content-center mt-4 py-5">
+            <div class="text-center alert alert-danger mt-2 w-50">
+                <strong>Error:</strong> {{errorMessage}}
+            </div>
+        </div>
+        } @else {
+        <app-patient-doctors-datatable [doctors]="doctorsList"
+            (dataChanged)="fetchData()"></app-patient-doctors-datatable>
+        <app-pagination [currentPage]="pageNumber" [totalPages]="totalPages"
+            (pageNumber)="fetchPatientDoctorsPage($event)"></app-pagination>
+        }
+        } @else {
+        <div class="d-flex flex-column align-items-center mt-4">
+            <h1><strong>Forbidden</strong></h1>
+            <p class="mt-4">Δεν έχετε άδεια για πρόσβαση στη σελίδα</p>
+        </div>
+        }
+    </div>
+</div>

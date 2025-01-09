@@ -1,0 +1,29 @@
+<div class="d-flex flex-column mt-2 align-items-center">
+    <h4>Αναζήτηση Ιατρού</h4>
+    <form [formGroup]="form" class="d-flex flex-wrap gap-2 mt-2">
+        <mat-form-field>
+            <mat-label>Επώνυμο</mat-label>
+            <input matInput type="text" formControlName="lastname">
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>Πόλη</mat-label>
+            <input matInput type="text" formControlName="city">
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>Ειδικότητα</mat-label>
+            <mat-select formControlName="specialty">
+                <mat-option value="Angiologist">Αγγειολόγος</mat-option>
+                <mat-option value="Pulmonologist">Πνευμονολόγος</mat-option>
+                <mat-option value="Nephrologist">Νεφρολόγος</mat-option>
+                <mat-option value="Cardiologist">Καρδιολόγος</mat-option>
+                <mat-option value="Pathologist">Παθολόγος</mat-option>
+                <mat-option value="Surgeon">Γενικός Χειρούργος</mat-option>
+            </mat-select>
+        </mat-form-field>
+        <div class="mt-2">
+            <button mat-flat-button class="bg-primary text-white" (click)="onSubmit(form.value)">
+                Αναζήτηση
+            </button>
+        </div>
+    </form>
+</div>

@@ -1,0 +1,17 @@
+<nav class="navbar navbar-dark bg-primary justify-content-between">
+  <a class="navbar-brand ms-3 d-flex align-items-center" routerLink="">
+    <img src="images/logo.png" alt="My Doctor Logo" width="100" height="100" class=" me-3">
+    <span class="h1">My Doctor</span>
+  </a>
+  <div class="d-flex align-items-center me-3">
+    @if (user()) {
+    <span class="text-light d-flex gap-2 align-items-center p-2 fs-3">
+      {{ user().name }}<mat-icon role="button" (click)="logout()">logout</mat-icon></span>
+    } @else {
+    <span class="text-light fs-3" role="button" routerLink="login">
+      Είσοδος
+    </span>
+    }
+
+  </div>
+</nav>

@@ -1,0 +1,15 @@
+<div class="list-group mt-3 ms-3">
+    <a class="list-group-item list-group-item-action" routerLink="/dashboard/profile" [routerLinkActive]="['active']">
+        ΠΡΟΦΙΛ</a>
+    @if(loggedInUser().role === "Patient") {
+    <a class="list-group-item list-group-item-action" routerLink="/dashboard/doctor-search" [routerLinkActive]="['active']">
+        ΒΡΕΣ ΙΑΤΡΟ</a>
+    }
+    @if(loggedInUser().role === "Patient") {
+        <a class="list-group-item list-group-item-action" routerLink="/dashboard/patient-doctors" [routerLinkActive]="['active']">
+            ΟΙ ΙΑΤΡΟΙ ΜΟΥ</a>
+    } @else {
+        <a class="list-group-item list-group-item-action" routerLink="/dashboard/doctor-patients" [routerLinkActive]="['active']">
+            ΟΙ ΑΣΘΕΝΕΙΣ ΜΟΥ</a>
+    }
+</div>

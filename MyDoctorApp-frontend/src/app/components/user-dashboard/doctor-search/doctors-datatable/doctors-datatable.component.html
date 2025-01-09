@@ -1,0 +1,27 @@
+<div class="table-responsive mt-4">
+    <table class="table table-bordered table-striped text-wrap">
+        <thead>
+            <tr>
+                <th>Όνομα</th>
+                <th>Επώνυμο</th>
+                <th>Πόλη</th>
+                <th>Ειδικότητα</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @for (row of doctors; track row) {
+            <tr class="align-middle">
+                <td>{{ row.firstname }}</td>
+                <td>{{ row.lastname }}</td>
+                <td>{{ row.city }}</td>
+                <td>{{ row.doctorSpecialty }}</td>
+                <td>
+                    <button class="btn btn-primary me-2" (click)="openInfoDialog(row)">Στοιχεία</button>
+                    <button class="btn btn-success" (click)="openAddDialog(row.id)">Προσθήκη</button>
+                </td>
+            </tr>
+            }
+        </tbody>
+    </table>
+</div>
